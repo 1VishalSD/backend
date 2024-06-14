@@ -8,7 +8,13 @@ dotenv.config({
   path: "./env",
 });
 
-connectDB();
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {});
+  })
+  .catch(() => {});
+
+// second type to connect to mongo atlas
 
 // import mongoose from "mongoose";
 // import { DB_NAME } from "./constants";
